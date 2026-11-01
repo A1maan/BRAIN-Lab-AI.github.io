@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · BRAIN Lab — KFUPM</title>
+  <meta name="description" content="Research projects from BRAIN Lab, KFUPM: SegVLM, UDAN-CLIP, PULSE, KRCapVLM, attack-aware deepfake detection and MultiviewVLM — with papers, code and project pages.">
+  <meta name="keywords" content="BRAIN Lab, KFUPM, AI research, computer vision, VLM, LLM, multimodal AI, medical AI, agentic AI, Saudi Arabia">
+  <meta name="author" content="BRAIN Lab, KFUPM">
+  <meta name="theme-color" content="#05070f">
+  <link rel="canonical" href="https://brain-lab-ai.github.io/projects.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects · BRAIN Lab — KFUPM">
+  <meta property="og:description" content="Research projects from BRAIN Lab, KFUPM: SegVLM, UDAN-CLIP, PULSE, KRCapVLM, attack-aware deepfake detection and MultiviewVLM — with papers, code and project pages.">
+  <meta property="og:url" content="https://brain-lab-ai.github.io/projects.html">
+  <meta property="og:image" content="https://brain-lab-ai.github.io/images/BRAINLabPeople.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/logo/favicon-64.png">
+  <link rel="apple-touch-icon" href="images/logo/apple-touch-icon.png">
+  <script>(function(){try{var t=localStorage.getItem("brainlab-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+
+<!-- ================= SVG ICON SPRITE ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.3-7-12a7 7 0 0 1 14 0c0 5.7-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <nav class="nav container" aria-label="Primary">
+    <a class="brand" href="index.html" aria-label="BRAIN Lab home">
+      <span class="brand__mark">
+        <img class="on-dark" src="images/logo/brainlab-mark-on-dark.png" alt="" width="53" height="46">
+        <img class="on-light" src="images/logo/brainlab-mark-on-light.png" alt="" width="53" height="46">
+      </span>
+      <span class="brand__name"><span><b>BRAIN</b> Lab</span><small>Breakthrough Research in Next Gen AI Networks Lab</small></span>
+    </a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="members.html">Members</a></li>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <!-- <li><a href="publications.html">Publications</a></li> -->
+    </ul>
+    <div class="nav__actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle light/dark theme">
+        <svg class="moon"><use href="#i-moon"/></svg><svg class="sun"><use href="#i-sun"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow reveal">Research</span>
+      <h1 class="reveal" style="--d:.05s">Projects &amp; <span class="grad-text">open research</span></h1>
+      <!-- <p class="lead reveal" style="--d:.1s">What we are building right now — each project ships with a paper, code, data and the technical details you need to reproduce or build on it.</p> -->
+      <div class="term reveal" style="--d:.15s"><span class="prompt">brain@lab:~$</span> git clone BRAIN-Lab-AI/<span data-type='["SegVLM","UDAN-CLIP","PULSE","KRCapVLM","Attack-Aware-Deepfake-Detection"]'></span><span class="caret"></span></div>
+    </div>
+  </section>
+
+  <!--
+    =====================================================================
+    PROJECTS — generated from the BRAIN-Lab-AI GitHub repositories.
+    Representative images go in images/projects/ with these names:
+      segvlm.jpg · udan-clip.jpg · pulse.jpg · krcapvlm.jpg · deepfake.jpg · multiviewvlm.jpg
+    (a styled placeholder shows until the file exists; any size or aspect ratio — images are shown uncropped)
+    To add a project: copy one whole <article class="project"> ... </article> block.
+    =====================================================================
+  -->
+
+  <div class="container">
+    <div class="projects">
+
+      <!-- ================= PROJECT 1: SegVLM ================= -->
+      <article class="project project--simple reveal" id="segvlm" data-cat="vlm vision">
+        <div class="project__media">
+          <div class="media" data-placeholder="images/projects/segvlm.jpg&#10;representative figure · any size">
+            <img src="images/projects/SegVLM.png" alt="SegVLM — SegVLM architecture" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="project__body">
+          <h2><span class="acr">SegVLM:</span> Deformable Attentive Visual Enhancement for Referring Image Segmentation Using Vision-Language Model</h2>
+          <p class="authors">Alaa Dalaq<sup>1</sup>, Muzammil Behzad<sup>1,2,*</sup><br><span class="affs"><sup>1</sup>KFUPM · <sup>2</sup>SDAIA-KFUPM JRC-AI</span></p>
+          <div class="tldr">
+            <b>TL;DR</b>
+            <p>Give it an image and a phrase like “black baseball cap” and it returns a pixel-accurate mask — sharpening visual features with deformable convolutions and SE recalibration before they meet the language, for +10.3 mIoU over CRIS on PhraseCut.</p>
+          </div>
+          <div class="links">
+            <a class="btn btn--sm" href="https://doi.org/10.1016/j.neunet.2026.109721" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Paper</a>
+            <a class="btn btn--sm" href="https://arxiv.org/abs/2505.19242" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>arXiv</a>
+            <a class="btn btn--sm" href="https://github.com/BRAIN-Lab-AI/SegVLM" target="_blank" rel="noopener"><svg><use href="#i-code"/></svg>Code</a>
+            <a class="btn btn--sm" href="https://brain-lab-ai.github.io/SegVLM/" target="_blank" rel="noopener"><svg><use href="#i-link"/></svg>Project page</a>
+            <a class="btn btn--sm" href="https://huggingface.co/papers/2505.19242" target="_blank" rel="noopener"><svg><use href="#i-box"/></svg>Hugging Face</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= PROJECT 2: UDAN-CLIP ================= -->
+      <article class="project project--simple reveal" id="udan-clip" data-cat="vlm vision">
+        <div class="project__media">
+          <div class="media" data-placeholder="images/projects/udan-clip.jpg&#10;representative figure · any size">
+            <img src="images/projects/UDAN-CLIP.png" alt="UDAN-CLIP — UDAN-CLIP pipeline" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="project__body">
+          <h2><span class="acr">UDAN-CLIP:</span> Underwater Diffusion Attention Network with Contrastive Language-Image Joint Learning for Underwater Image Enhancement</h2>
+          <p class="authors">Afrah Shaahid<sup>1</sup>, Muzammil Behzad<sup>1,2</sup><br><span class="affs"><sup>1</sup>KFUPM · <sup>2</sup>SDAIA-KFUPM JRC-AI</span></p>
+          <div class="tldr">
+            <b>TL;DR</b>
+            <p>A diffusion model that restores color, contrast and fine detail in murky underwater photos, steered by a CLIP classifier that keeps natural in-air priors and a spatial attention module that targets haze and backscatter.</p>
+          </div>
+          <div class="links">
+            <a class="btn btn--sm" href="https://www.sciencedirect.com/science/article/abs/pii/S003132032600539X" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Paper</a>
+            <a class="btn btn--sm" href="https://arxiv.org/abs/2505.19895" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>arXiv</a>
+            <a class="btn btn--sm" href="https://github.com/BRAIN-Lab-AI/UDAN-CLIP" target="_blank" rel="noopener"><svg><use href="#i-code"/></svg>Code</a>
+            <a class="btn btn--sm" href="https://brain-lab-ai.github.io/UDAN-CLIP/" target="_blank" rel="noopener"><svg><use href="#i-link"/></svg>Project page</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= PROJECT 3: PULSE ================= -->
+      <article class="project project--simple reveal" id="pulse" data-cat="medical vision">
+        <div class="project__media">
+          <div class="media" data-placeholder="images/projects/pulse.jpg&#10;representative figure · any size">
+            <img src="images/projects/PULSE.png" alt="PULSE — framework overview" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="project__body">
+          <h2><span class="acr">PULSE:</span> A Unified Multi-Task Architecture for Cardiac Segmentation, Diagnosis, and Few-Shot Cross-Modality Clinical Adaptation</h2>
+          <p class="authors">Hania Ghouse<sup>1</sup>, Maryam Alsharqi<sup>2</sup>, Farhad Nezami<sup>2,3</sup>, Muzammil Behzad<sup>1,4</sup><br><span class="affs"><sup>1</sup>KFUPM · <sup>2</sup>MIT · <sup>3</sup>Harvard Medical School · <sup>4</sup>SDAIA-KFUPM JRC-AI</span></p>
+          <div class="tldr">
+            <b>TL;DR</b>
+            <p>One model reads a short-axis cardiac MRI study and returns ventricular segmentation, cardiomyopathy diagnosis and a structured clinical report in a single pass — and transfers to new scanners and even echocardiography.</p>
+          </div>
+          <div class="links">
+            <a class="btn btn--sm" href="https://ieeexplore.ieee.org/document/11660344" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Paper</a>
+            <a class="btn btn--sm" href="https://doi.org/10.48550/arXiv.2512.03848" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>arXiv</a>
+            <a class="btn btn--sm" href="https://github.com/BRAIN-Lab-AI/PULSE" target="_blank" rel="noopener"><svg><use href="#i-code"/></svg>Code</a>
+            <a class="btn btn--sm" href="https://brain-lab-ai.github.io/PULSE/" target="_blank" rel="noopener"><svg><use href="#i-link"/></svg>Project page</a>
+            <a class="btn btn--sm" href="https://github.com/BRAIN-Lab-AI/PULSE/releases/tag/v1.0" target="_blank" rel="noopener"><svg><use href="#i-box"/></svg>Weights</a>
+            <a class="btn btn--sm" href="https://huggingface.co/hg-0403/PULSE" target="_blank" rel="noopener"><svg><use href="#i-box"/></svg>Hugging Face</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= PROJECT 4: KRCapVLM ================= -->
+      <article class="project project--simple reveal" id="krcapvlm" data-cat="vlm">
+        <div class="project__media">
+          <div class="media" data-placeholder="images/projects/krcapvlm.jpg&#10;representative figure · any size">
+            <img src="images/projects/KRCapVLM.png" alt="KRCapVLM — KRCapVLM framework" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="project__body">
+          <h2><span class="acr">KRCapVLM:</span> Beam-Guided Knowledge Replay for Knowledge-Rich Image Captioning using Vision-Language Model</h2>
+          <p class="authors">Reem Aljunaid<sup>1,2</sup>, Qasim Umer<sup>1</sup>, Sajjad Mahmood<sup>1</sup>, Mahmood Niazi<sup>1</sup>, Muzammil Behzad<sup>1,3,*</sup><br><span class="affs"><sup>1</sup>KFUPM · <sup>2</sup>Imam Abdulrahman Bin Faisal University · <sup>3</sup>SDAIA-KFUPM JRC-AI</span></p>
+          <div class="tldr">
+            <b>TL;DR</b>
+            <p>Captioning models say “a tower”; KRCapVLM says “Big Ben”. Beam-guided knowledge replay, patch self-attention and a cosine schedule lift real-world concept recognition from 50.4% to 63.3% on KnowCap.</p>
+          </div>
+          <div class="links">
+            <a class="btn btn--sm" href="https://www.sciencedirect.com/science/article/pii/S0031320326005340" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Paper</a>
+            <a class="btn btn--sm" href="https://github.com/BRAIN-Lab-AI/KRCapVLM" target="_blank" rel="noopener"><svg><use href="#i-code"/></svg>Code</a>
+            <a class="btn btn--sm" href="https://brain-lab-ai.github.io/KRCapVLM/" target="_blank" rel="noopener"><svg><use href="#i-link"/></svg>Project page</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= PROJECT 5: Attack-Aware ================= -->
+      <article class="project project--simple reveal" id="deepfake" data-cat="trust vision">
+        <div class="project__media">
+          <div class="media" data-placeholder="images/projects/deepfake.jpg&#10;representative figure · any size">
+            <img src="images/projects/AttackAware.png" alt="Attack-Aware — dual-stream architecture" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="project__body">
+          <h2><span class="acr">Attack-Aware</span> Deepfake Detection under Counter-Forensic Manipulations</h2>
+          <p class="authors">Noor Fatima<sup>1</sup>, Hasan Faraz Khan<sup>1</sup>, Muzammil Behzad<sup>1,2,*</sup><br><span class="affs"><sup>1</sup>KFUPM · <sup>2</sup>SDAIA-KFUPM JRC-AI</span></p>
+          <div class="tldr">
+            <b>TL;DR</b>
+            <p>A deepfake detector built to survive the edit: it trains on whichever compression, regrain or transcode attack hurts most, fuses semantic and forensic-residual streams, and shows where the evidence is with weakly supervised heatmaps.</p>
+          </div>
+          <div class="links">
+            <a class="btn btn--sm" href="https://ieeexplore.ieee.org/abstract/document/11695139/" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Paper</a>
+            <a class="btn btn--sm" href="https://github.com/BRAIN-Lab-AI/Attack-Aware-Deepfake-Detection" target="_blank" rel="noopener"><svg><use href="#i-code"/></svg>Code</a>
+            <a class="btn btn--sm" href="https://brain-lab-ai.github.io/Attack-Aware-Deepfake-Detection/" target="_blank" rel="noopener"><svg><use href="#i-link"/></svg>Project page</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ================= PROJECT 6: MultiviewVLM ================= -->
+      <article class="project project--simple reveal" id="multiviewvlm" data-cat="vlm vision">
+        <div class="project__media">
+          <div class="media" data-placeholder="images/projects/multiviewvlm.jpg&#10;representative figure · any size">
+            <img src="images/projects/MultiviewVLM.png" alt="MultiviewVLM — MultiviewVLM framework" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="project__body">
+          <h2><span class="acr">MultiviewVLM:</span> Unsupervised Multiview Contrastive Language-Image Joint Learning with Pseudo-Labeled Prompts via Vision-Language Model for 3D/4D Facial Expression Recognition</h2>
+          <p class="authors">Muzammil Behzad<sup>1,2</sup><br><span class="affs"><sup>1</sup>KFUPM · <sup>2</sup>SDAIA-KFUPM JRC-AI</span></p>
+          <div class="tldr">
+            <b>TL;DR</b>
+            <p>A vision-language model that learns facial-emotion representations from 3D/4D faces without labels — text-prompt pseudo-labels supply the emotional meaning, and multiview contrastive learning ties together different views of the same face.</p>
+          </div>
+          <div class="links">
+            <a class="btn btn--sm" href="https://ieeexplore.ieee.org/abstract/document/11447443" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>Paper</a>
+            <a class="btn btn--sm" href="https://arxiv.org/abs/2505.09336" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>arXiv</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <section class="section--tight" style="margin-top:40px">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <span class="eyebrow">Collaborate</span>
+          <h2>Have data, compute or a <span class="grad-text">hard problem</span>?</h2>
+          <p>We partner with hospitals, industry and academic groups on applied AI research. Let's talk about co-supervised projects, datasets and joint grants.</p>
+        </div>
+        <div class="contact-list">
+          <a class="contact-item" href="mailto:muzammil.behzad@kfupm.edu.sa?subject=Research%20collaboration%20with%20BRAIN%20Lab">
+            <svg><use href="#i-mail"/></svg>
+            <div><small>Start a conversation</small><span>muzammil.behzad@kfupm.edu.sa</span></div>
+          </a>
+          <a class="contact-item" href="members.html">
+            <svg><use href="#i-user"/></svg>
+            <div><small>See who's working on what</small><span>Meet the team →</span></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-simple">
+    <a class="footer-logo" href="index.html" aria-label="BRAIN Lab home">
+      <img class="on-dark" src="images/logo/brainlab-logo-on-dark.png" alt="BRAIN Lab — Breakthrough Research in Next Gen AI Networks" loading="lazy" width="248" height="80">
+      <img class="on-light" src="images/logo/brainlab-logo-on-light.png" alt="BRAIN Lab — Breakthrough Research in Next Gen AI Networks" loading="lazy" width="248" height="80">
+    </a>
+    <p class="copyright">© <span data-year>2026</span> BRAIN Lab</p>
+  </div>
+</footer>
+
+<button class="icon-btn to-top" type="button" aria-label="Back to top"><svg><use href="#i-up"/></svg></button>
+
+</body>
+</html>
