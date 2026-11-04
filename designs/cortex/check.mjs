@@ -579,13 +579,13 @@ assert.equal(still.frames.size, 0);
 assert.equal(still.ctx.draws, 0);
 const mobileSurface = await motionHarness('surface', false, 390);
 assert.equal(mobileSurface.canvas.height, 450, 'Mobile surface must stay in its 300px band at 1.5 DPR');
-function filmHarness(reduce = false) {
+function filmHarness(reduce = false, mobile = false) {
   const events = {}, windowEvents = {}, videoEvents = {};
   const reduced = {matches: reduce, addEventListener(event, fn) { this.change = fn; }};
   const forced = {matches: false, addEventListener(event, fn) { this.change = fn; }};
   const toggle = {setAttribute(name, value) { this[name] = value; }, addEventListener(event, fn) { this.click = fn; }};
   const video = {
-    src: '', dataset: {src: 'assets/montage/hero.mp4'}, paused: true, deny: false,
+    src: '', dataset: {src: 'assets/montage/hero.mp4', srcMobile: 'assets/montage/hero-mobile.mp4'}, paused: true, deny: false,
     getAttribute() { return this.src; },
     pause() { this.paused = true; },
     play() { if (this.deny) return Promise.reject(new Error('Autoplay blocked')); this.paused = false; return Promise.resolve(); },
@@ -596,7 +596,7 @@ function filmHarness(reduce = false) {
   let intersect;
   const context = vm.createContext({
     document: doc, window: {addEventListener(name, fn) { windowEvents[name] = fn; }},
-    matchMedia: query => query.includes('reduced-motion') ? reduced : forced,
+    matchMedia: query => query.includes('reduced-motion') ? reduced : query.includes('max-width') ? {matches: mobile} : forced,
     IntersectionObserver: class {constructor(fn) { intersect = fn; } observe() {}}
   });
   vm.runInContext(read('motion.js'), context);
@@ -673,3 +673,16 @@ for (const available of [true, false]) {
   }
 }
 console.log('Passed: local contact anchors, visible original address, browser compose links, copy-email success and clipboard fallback.');
+
+const phoneFilm = filmHarness(false, true);
+assert.equal(phoneFilm.video.src, '', 'Mobile must preserve deferred video loading');
+phoneFilm.intersect(true);
+assert.equal(phoneFilm.video.src, 'assets/montage/hero-mobile.mp4');
+phoneFilm.toggle.click();
+assert.equal(phoneFilm.video.paused, true);
+phoneFilm.toggle.click();
+assert.equal(phoneFilm.video.paused, false);
+const reducedPhoneFilm = filmHarness(true, true);
+reducedPhoneFilm.intersect(true);
+assert.equal(reducedPhoneFilm.video.src, '', 'Reduced-motion phones must not download either video');
+console.log('Passed: mobile video source selection, lazy loading, pause/resume, and reduced motion.');

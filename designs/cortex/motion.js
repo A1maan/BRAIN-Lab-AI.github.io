@@ -46,7 +46,10 @@ function startHeroFilm(hero) {
     toggle.setAttribute('aria-pressed', String(paused));
     hero.dataset.motionState = failed ? 'unavailable' : reduced.matches ? 'reduced' : running ? 'playing' : paused ? 'paused' : 'idle';
     if (!running) { video.pause(); return; }
-    if (!video.getAttribute('src')) video.src = video.dataset.src;
+    if (!video.getAttribute('src')) {
+      video.src = matchMedia('(max-width: 767px)').matches && video.dataset.srcMobile
+        ? video.dataset.srcMobile : video.dataset.src;
+    }
     video.play().catch(() => {
       if (ticket !== request) return;
       paused = true;

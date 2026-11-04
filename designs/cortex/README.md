@@ -104,3 +104,9 @@ All remaining filled `.button` calls to action have been replaced with visible c
 ## Fork review deployment
 
 The shareable redesign lives at `https://a1maan.github.io/BRAIN-Lab-AI.github.io/designs/cortex/`. GitHub Pages serves the `main` branch root of **A1maan/BRAIN-Lab-AI.github.io**. The original site files remain at the root for comparison; no changes are pushed to the upstream lab repository. Preview pages request no indexing. Local screenshots and editor settings are excluded from the commit.
+
+## iPhone edge and mobile film update
+
+The iOS/WebKit header supplies a small unfiltered color strip at the viewport edge for Safari’s toolbar color sampling, then fades that strip into the existing transparent material. Navigation dimensions, glass capsules, and the progressive lower blur are unchanged. This follows the edge-sampling behavior described by WebKit in https://bugs.webkit.org/show_bug.cgi?id=301756. Actual iPhone toolbar rendering still requires device verification; a desktop responsive viewport cannot reproduce Safari’s chrome.
+
+At widths up to 767px the hero retains its full-screen minimum height and presents the entire 16:9 film below the copy, avoiding the severe portrait crop. Short screens can scroll to retain readable text. The poster uses the same framing, and grain/blur remain separate CSS layers. A 640×360, 24-second silent H.264 copy (`hero-mobile.mp4`, 1,498,936 bytes) is selected before the first download on phones; desktop keeps the existing film. Pause, reduced motion and deferred loading remain intact. Responsive layouts were checked at 320px, 390px, 440px and landscape; no horizontal overflow was found.

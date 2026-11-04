@@ -36,8 +36,10 @@
 :root[data-motion="film"] .hero-description, :root[data-motion="film"] .hero .eyebrow { color: #d0d8e5; }
 :root[data-motion="film"] .motion-toggle { z-index: 3; }
 @media (max-width: 767px) {
-  :root[data-motion="film"] .hero { padding-bottom: 100px; }
-  .hero-film::before { background: linear-gradient(180deg, rgba(5, 10, 18, .7), rgba(5, 10, 18, .8) 35%, rgba(5, 10, 18, .7) 75%, rgba(5, 10, 18, .45)); }
+  :root[data-motion="film"] .hero { min-height: 100svh; align-items: start; padding-bottom: calc(56.25vw + 76px); }
+  .hero-film { background-size: 100% auto; background-position: center bottom 48px; }
+  .hero-video { position: absolute; bottom: 48px; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+  .hero-film::before { background: linear-gradient(to bottom, #08101d calc(100% - 56.25vw - 48px), rgba(8, 16, 29, .2) calc(100% - 56.25vw - 16px), rgba(8, 16, 29, .15) calc(100% - 72px), #08101d calc(100% - 40px)); }
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .hero-film::before { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(5, 10, 18, .9); }

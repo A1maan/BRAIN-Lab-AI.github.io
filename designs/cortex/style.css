@@ -103,3 +103,13 @@ html{scroll-padding-top:88px}
 .join-section .contact-details{--contact-muted:#acbad0}
 @media(hover:hover) and (pointer:fine){.contact-email:hover,.contact-actions a:hover,.contact-actions button:hover{text-decoration-color:currentColor}}
 @media(max-width:767px){.join-layout{grid-template-columns:1fr;gap:40px}.contact-actions{gap:4px 20px}}
+
+/* Safari samples an unfiltered viewport edge for the area under its toolbar. */
+@supports (-webkit-touch-callout: none) {
+    .site-header { --toolbar-edge: var(--bg); --toolbar-edge-height: max(12px, env(safe-area-inset-top, 0px)); }
+    .home-header:not(.is-over-content) { --toolbar-edge: var(--hero); }
+    .site-header > .nav { z-index: 2; }
+    .site-header::before, .site-header::after { content: ""; pointer-events: none; z-index: 1; }
+    .site-header::before { position: fixed; inset: 0 0 auto; height: var(--toolbar-edge-height); background-color: var(--toolbar-edge); }
+    .site-header::after { position: absolute; inset: var(--toolbar-edge-height) 0 auto; height: 36px; background: linear-gradient(var(--toolbar-edge), transparent); }
+}
