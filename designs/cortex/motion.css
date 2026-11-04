@@ -1,0 +1,46 @@
+.home-header { position: fixed; inset: 0 0 auto; z-index: 4; }
+.hero { min-height: 100svh; min-height: 100dvh; padding-top: clamp(121px, 20dvh, 175px); padding-bottom: 72px; padding-inline: max(64px, calc((100% - 1312px) / 2)); }
+.hero-motion { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; display: none; }
+.hero[data-motion-ready] .hero-motion { display: block; }
+.hero[data-motion-ready] .hero-art img { visibility: hidden; }
+.motion-toggle { position: absolute; right: max(64px, calc((100% - 1312px) / 2)); bottom: 24px; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(224,231,242,.48); border-radius: 50%; color: #e0e7f2; background: rgba(9,17,30,.25); transition: border-color 160ms ease-out, background-color 160ms ease-out; }
+.motion-toggle::before { content: ""; box-sizing: border-box; width: 10px; height: 12px; border-left: 3px solid currentColor; border-right: 3px solid currentColor; }
+.motion-toggle[aria-pressed="true"]::before { width: 0; height: 0; margin-left: 3px; border: 6px solid transparent; border-left: 9px solid currentColor; border-right: 0; }
+.motion-toggle:focus-visible { outline-color: #e3edff; }
+@media (hover: hover) and (pointer: fine) { .motion-toggle:hover { border-color: currentColor; background: rgba(255,255,255,.1); } }
+@media (max-width: 1100px) { .hero { padding-top: clamp(121px, 20dvh, 169px); padding-inline: 40px; }.motion-toggle { right: 40px; } }
+@media (max-width: 767px) {
+  .hero { padding-top: 181px; padding-bottom: 335px; padding-inline: 24px; }
+  .motion-toggle { right: 24px; bottom: 14px; }
+  :root[data-motion="surface"] .hero-motion { top: auto; height: 300px; mask-image: linear-gradient(transparent, #000 16%); }
+}
+
+@media (forced-colors: active) { .hero-motion { display: none !important; }.hero[data-motion-ready] .hero-art img { visibility: visible; } }
+
+/* Video and treatment share a lower stacking context; all site content stays sharp. */
+.hero-film { display: none; position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: #08101d url("assets/montage/poster.jpg") center / cover no-repeat; }
+.hero-video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-film::before, .hero-film::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.hero-film::before {
+  z-index: 1;
+  -webkit-backdrop-filter: blur(1.2px);
+  backdrop-filter: blur(1.2px);
+  background: linear-gradient(90deg, rgba(5, 10, 18, .91), rgba(5, 10, 18, .79) 38%, rgba(5, 10, 18, .38) 72%, rgba(5, 10, 18, .28)), linear-gradient(180deg, rgba(5, 10, 18, .8), rgba(5, 10, 18, .45) 110px, transparent 32%, transparent 70%, rgba(5, 10, 18, .32));
+}
+.hero-film::after { z-index: 2; background: url("assets/montage/grain.svg") repeat; background-size: 180px 180px; opacity: .14; }
+:root[data-motion="film"] .hero-film { display: block; }
+:root[data-motion="film"] .hero-art { display: none; }
+:root[data-motion="film"] .hero-copy { z-index: 2; }
+:root[data-motion="film"] .home-header:not(.is-scrolled) { background: transparent; }
+:root[data-motion="film"] .hero h1 span:last-child { color: #d6deeb; }
+:root[data-motion="film"] .hero-description, :root[data-motion="film"] .hero .eyebrow { color: #d0d8e5; }
+:root[data-motion="film"] .motion-toggle { z-index: 3; }
+@media (max-width: 767px) {
+  :root[data-motion="film"] .hero { padding-bottom: 100px; }
+  .hero-film::before { background: linear-gradient(180deg, rgba(5, 10, 18, .7), rgba(5, 10, 18, .8) 35%, rgba(5, 10, 18, .7) 75%, rgba(5, 10, 18, .45)); }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .hero-film::before { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(5, 10, 18, .9); }
+  .hero-film::after { display: none; }
+}
+@media (forced-colors: active) { .hero-film { display: none !important; }:root[data-motion="film"] .hero h1 span:last-child, :root[data-motion="film"] .hero-description, :root[data-motion="film"] .hero .eyebrow { color: CanvasText; } }
