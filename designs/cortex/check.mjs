@@ -583,10 +583,14 @@ function filmHarness(reduce = false, mobile = false) {
   const events = {}, windowEvents = {}, videoEvents = {};
   const reduced = {matches: reduce, addEventListener(event, fn) { this.change = fn; }};
   const forced = {matches: false, addEventListener(event, fn) { this.change = fn; }};
+  const portrait = {matches: mobile, addEventListener(event, fn) {this.change = fn;}};
   const toggle = {setAttribute(name, value) { this[name] = value; }, addEventListener(event, fn) { this.click = fn; }};
   const video = {
-    src: '', dataset: {src: 'assets/montage/hero.mp4', srcMobile: 'assets/montage/hero-mobile.mp4'}, paused: true, deny: false,
+    src: '', dataset: {src: 'assets/montage/hero.mp4', srcMobile: 'assets/montage/hero-portrait.mp4', posterMobile: 'assets/montage/poster-portrait.jpg'}, paused: true, deny: false,
+    poster: 'assets/montage/poster.jpg', currentTime: 0, duration: 24,
     getAttribute() { return this.src; },
+    removeAttribute() { this.src = ''; },
+    load() { this.currentTime = 0; },
     pause() { this.paused = true; },
     play() { if (this.deny) return Promise.reject(new Error('Autoplay blocked')); this.paused = false; return Promise.resolve(); },
     addEventListener(name, fn) { videoEvents[name] = fn; }
@@ -596,12 +600,12 @@ function filmHarness(reduce = false, mobile = false) {
   let intersect;
   const context = vm.createContext({
     document: doc, window: {addEventListener(name, fn) { windowEvents[name] = fn; }},
-    matchMedia: query => query.includes('reduced-motion') ? reduced : query.includes('max-width') ? {matches: mobile} : forced,
+    matchMedia: query => query.includes('reduced-motion') ? reduced : query.includes('max-aspect-ratio') ? portrait : forced,
     IntersectionObserver: class {constructor(fn) { intersect = fn; } observe() {}}
   });
   vm.runInContext(read('motion.js'), context);
   context.startHeroFilm(hero);
-  return {video, toggle, hero, doc, events, windowEvents, videoEvents, reduced, forced, intersect: visible => intersect([{isIntersecting: visible}])};
+  return {video, toggle, hero, doc, events, windowEvents, videoEvents, reduced, forced, portrait, intersect: visible => intersect([{isIntersecting: visible}])};
 }
 const film = filmHarness();
 assert.equal(film.video.src, '', 'Do not load an offscreen film');
@@ -677,7 +681,7 @@ console.log('Passed: local contact anchors, visible original address, browser co
 const phoneFilm = filmHarness(false, true);
 assert.equal(phoneFilm.video.src, '', 'Mobile must preserve deferred video loading');
 phoneFilm.intersect(true);
-assert.equal(phoneFilm.video.src, 'assets/montage/hero-mobile.mp4');
+assert.equal(phoneFilm.video.src, 'assets/montage/hero-portrait.mp4');
 phoneFilm.toggle.click();
 assert.equal(phoneFilm.video.paused, true);
 phoneFilm.toggle.click();
@@ -686,3 +690,21 @@ const reducedPhoneFilm = filmHarness(true, true);
 reducedPhoneFilm.intersect(true);
 assert.equal(reducedPhoneFilm.video.src, '', 'Reduced-motion phones must not download either video');
 console.log('Passed: mobile video source selection, lazy loading, pause/resume, and reduced motion.');
+
+assert.equal(phoneFilm.video.poster, 'assets/montage/poster-portrait.jpg');
+phoneFilm.video.currentTime = 9;
+phoneFilm.portrait.matches = false; phoneFilm.portrait.change();
+assert.equal(phoneFilm.video.src, 'assets/montage/hero.mp4');
+phoneFilm.videoEvents.loadedmetadata();
+assert.equal(phoneFilm.video.currentTime, 9, 'Rotation preserves playback position');
+assert.equal(phoneFilm.video.poster, 'assets/montage/poster.jpg');
+phoneFilm.toggle.click();
+phoneFilm.video.currentTime = 12;
+phoneFilm.portrait.matches = true; phoneFilm.portrait.change();
+assert.equal(phoneFilm.video.src, '', 'Rotation while paused shows the correct poster without downloading');
+assert.equal(phoneFilm.video.poster, 'assets/montage/poster-portrait.jpg');
+phoneFilm.toggle.click(); phoneFilm.videoEvents.loadedmetadata();
+assert.equal(phoneFilm.video.src, 'assets/montage/hero-portrait.mp4');
+assert.equal(phoneFilm.video.currentTime, 12);
+assert.equal(phoneFilm.video.paused, false);
+console.log('Passed: portrait/landscape selection, matching posters, rotation position and pause preference.');

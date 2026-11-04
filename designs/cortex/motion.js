@@ -35,10 +35,14 @@ function startHeroFilm(hero) {
   const toggle = hero.querySelector('.motion-toggle');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const forced = matchMedia('(forced-colors: active)');
+  const portrait = matchMedia('(max-aspect-ratio: 3/4)');
+  const desktopPoster = video.poster;
+  let resumeTime = 0;
   let visible = false, paused = false, failed = false, request = 0;
 
   function sync() {
     const ticket = ++request;
+    video.poster = portrait.matches && video.dataset.posterMobile ? video.dataset.posterMobile : desktopPoster;
     const running = visible && !paused && !failed && !reduced.matches && !forced.matches && !document.hidden;
     toggle.hidden = reduced.matches || forced.matches || failed;
     toggle.setAttribute('aria-label', paused ? 'Play motion' : 'Pause motion');
@@ -47,7 +51,7 @@ function startHeroFilm(hero) {
     hero.dataset.motionState = failed ? 'unavailable' : reduced.matches ? 'reduced' : running ? 'playing' : paused ? 'paused' : 'idle';
     if (!running) { video.pause(); return; }
     if (!video.getAttribute('src')) {
-      video.src = matchMedia('(max-width: 767px)').matches && video.dataset.srcMobile
+      video.src = portrait.matches && video.dataset.srcMobile
         ? video.dataset.srcMobile : video.dataset.src;
     }
     video.play().catch(() => {
@@ -58,6 +62,20 @@ function startHeroFilm(hero) {
   }
   toggle.addEventListener('click', () => { paused = !paused; sync(); });
   video.addEventListener('error', () => { failed = true; video.hidden = true; sync(); });
+  video.addEventListener('loadedmetadata', () => {
+    if (resumeTime > 0) video.currentTime = Math.min(resumeTime, video.duration);
+    resumeTime = 0;
+  });
+  portrait.addEventListener('change', () => {
+    resumeTime = video.currentTime || resumeTime;
+    // Clear the old orientation without downloading the next one while paused/offscreen.
+    if (video.getAttribute('src')) {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    }
+    sync();
+  });
   new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, {threshold: .05}).observe(hero);
   reduced.addEventListener('change', sync);
   forced.addEventListener('change', sync);
